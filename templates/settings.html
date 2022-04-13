@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Settings</title>
+{% endblock %}
+
+{% block main_content %}
+    <h1> Welcome to Your Settings Page, {{ current_user.firstname }}!</h1>
+
+    <form method="post" action="">    
+        <h2>Update Your Display Name</h2>
+            <p><label for="first">What would you like to update your first name to?
+                <input type="text" name="first">
+            </label>
+            <input name="submit" type="submit" value="Submit New First Name"></p>
+    </form>
+
+    <form method ="post" action="">
+        <p><label for="last">What would you like to update your last name to?
+            <input type="text" name="last">
+        </label>
+        <input name="submit" type="submit" value="Submit New Last Name"></p>
+    </form>
+
+    <form method="post" action="">
+        <h2>Change Your Password</h2>
+        <p><label for="new-pass">Type your new password here:
+            <input type="text" name="new-pass">
+        </label></p>
+        <input name="submit" type="submit" value="Submit New Password">
+    </form>
+
+    <h2>Manage Team Memberships</h2>
+        <h3>Current Teams</h3>
+        <ul>
+            {% for club in clubs %}
+                <li>{{ club }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Add a New Team</h3>
+        <form method="post" action="">
+            <select class="team-list" name="team-list">
+                <option value="none">Choose One</option>
+                {% for club in all_clubs %}
+                    <option value="{{ club.sid }}">{{ club.sport }}</option>
+                {% endfor %}
+            </select>
+            <input name="submit" type="submit" value="Add Team">
+        </form>
+
+        <h3>Delete a Team</h3>
+        <form method="post" action="">
+            <select class="team-list" name="team-list">
+                <option value="none">Choose One</option>
+                {% for club in clubs %}
+                    <option value="{{ club }}">{{ club }}</option>
+                {% endfor %}
+            </select>
+            <input name="submit" type="submit" value="Delete Team"> 
+        </form>
+
+    <form method="post" action="">
+        <!-- Add a confirmation pop up in alpha? Through JavaScript? -->
+        <h2>Delete Your Account: <input name="submit" type="submit" value="Delete Account"></h2>
+    </form>
+
+    <!-- only visible if you are an admin -->
+    {% if current_user.admin %}
+        <form method="post" action="">
+            <p><h2 for="new-admin">Designate a New Admin:
+                <select id="new-admin" name="new-admin">
+                    <option value="none">Choose One</option>
+                    {% for user in users %}
+                        <option value="{{ user.uid }}">{{ user.firstname }} {{ user.lastname }}</option>
+                    {% endfor %}
+                </select>
+                <input name="submit" type="submit" value="Add Admin">
+            </h2></p>
+        </form>
+    {% endif %}
+{% endblock %}
