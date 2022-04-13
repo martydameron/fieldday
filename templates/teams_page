@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Teams</title>
+{% endblock %}
+
+{% block main_content %}
+
+<h1>Sport Teams</h1>
+<ol>{% for sport in sports%}
+<li><a href="{{url_for('sport',sport_id_number=sport.sid)}}">{{sport.sport}}</a></li>
+{% endfor %}
+</ol>
+{% endblock %}
