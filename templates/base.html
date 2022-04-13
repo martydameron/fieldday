@@ -5,7 +5,9 @@
     <!-- for mobile-friendly pages -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name=author content="">
-    <title>{{ page_title }}</title>
+    {% block title %}
+    <title>page_title</title>
+    {% endblock %}
     <link rel='stylesheet' href="{{url_for('static', filename = 'style.css')}}">
     {% block head_stuff %} {% endblock %}
 </head>
@@ -24,9 +26,41 @@
 {% block nav %}
 <nav>
   <ul>
-    <li><a href="{{url_for('index')}}">home</a></li>
-    <li><a href="{{url_for('greet')}}">greet</a></li>
-    <li><a href="{{url_for('testform')}}">testform</a></li>
+    <li><a href="{{url_for('home_page')}}">Home</a></li>
+    <li><a href="{{url_for('feed_page')}}">Feed</a></li>
+    <li><a href="{{url_for('setting_page')}}">Settings</a></li>
+
+    <!-- drop down menu to list teams -->
+    <div class="dropdown">
+      <button class="dropbtn">Teams
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="{{url_for('sport',sport_id_number=1)}}">Archery</a>
+        <a href="{{url_for('sport',sport_id_number=2)}}">Equestrian</a>
+        <a href="{{url_for('sport',sport_id_number=3)}}">Nordic ski</a>
+        <a href="{{url_for('sport',sport_id_number=4)}}">Rugby</a>
+        <a href="{{url_for('sport',sport_id_number=5)}}">Sailing</a>
+        <a href="{{url_for('sport',sport_id_number=6)}}">Squash</a>
+        <a href="{{url_for('sport',sport_id_number=7)}}">Frisbee</a>
+        <a href="{{url_for('sport',sport_id_number=8)}}">Water Polo</a>
+
+      </div>
+      </div> 
+
+    <!-- creates search bar -->
+    <li>
+        <!-- need to update action once we find out where to send those values -->
+      <form class="search" method="GET" action="/query/">
+      <p> <!-- if we remove this element, search bar goes to top. -->
+      <label>
+        <input type="text" required name="query">
+      </label>
+      </label>
+      <input id="searchButton" type="submit" value="search">
+    </p>
+      </form>
+    </li>
   </ul>
 </nav>
 {% endblock %}
@@ -35,9 +69,10 @@
 <h1>Welcome!</h1>
 {% endblock %}
 
+  {% block scripts%}
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  {% block end_scripts %}
+ 
   {% endblock %}
-  
+
 </body>
 </html>
