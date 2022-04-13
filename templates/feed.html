@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Feed</title>
+{% endblock %}
+
+{% block main_content %}
+<h1> My Feed </h1>
+
+{% for post in posts%}
+<section id="post">
+<fieldset>
+    <legend>{{post.sport}}</legend>
+    <table>
+    <tr><td><label>{{post.caption}}</label></td>
+        <tr><td><p></p></td> <!--prints empty line for spacing between boxes-->
+    <tr><td><label id="timestamp">(Posted on {{post.date}})</label></td>
+    </table>
+</fieldset>
+
+ <!-- in alpha, we will need to send info to backend to update 
+the number of likes and dislikes when the like or dislike
+button is clicked. it might be better to use an input
+tag to make accessing info easier -->
+
+<button class="feedPageButtons" type="button"> Like</button>
+<button class="feedPageButtons" type="button"> Dislike</button>
+</section>
+
+<!-- for alpha: show first comment of post and when button is clicked,
+expand to show the rest of the comments for post and also 
+allow for the user to comment if they choose too-->
+<p> Comments:</p>
+
+<button class="feedPageButtons" type="button"> Click to expand comment section</button>
+<p> </p> <!--prints empty line for spacing between boxes-->
+
+{% endfor %}
+
+<!--show more displays more posts for the user. creates an endless
+scrolling feature. will be implemented in beta if time allows-->
+<p><button class="feedPageButtons" type="button"> Show More</button></p>
+
+{% endblock %}
