@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Individual Team Name</title>
+{% endblock %}
+
+{% block main_content %}
+    <h1>{{ name }}</h1>
+
+    {% if current_user.admin %}
+        <form method="post" action>
+            
+        </form>
+    {% endif %}
+{% endblock %}
