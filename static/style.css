@@ -2,9 +2,11 @@
 */
 
 HTML {
-    --color-header: #007ea9;  /* color for H1-H6 and others. was deepskyblue but poor contrast. */
-    --color-hilite: #b50000;  /* was red, but this avoids WAVE contrast errors */ 
-    --color-focus: #56B929;
+    --color-header: #75B572;
+    --color-header2: #2A6B4B; /* or #479A72*/
+    --color-nav-bar: #82E0AA; 
+    --color-hilite: #b50000;  
+    --color-focus: #71D073; 
     --font-family: Verdana;
     font-family: var(--font-family)
 }
@@ -16,14 +18,57 @@ HTML {
     font-style: italic;
 }
 
+#searchButton{
+    background-color:var( --color-nav-bar);
+    color: black;
+    /*font-weight: bold; doing this make button go lower. how can i fix this?*/
+    border-radius:5px; 
+    cursor: pointer;
+}
+#timestamp{
+    font-size: 0.6em;
+}
+
+#post{
+    border: 2px solid var(--color-header2);
+    display: inline-block;
+    padding: 2ex;
+    border-radius: 2ex;
+}
+
+#homePageList {
+    list-style-type:circle;
+}
+
+.feedPageButtons {
+    font-size: 1em;
+    font-weight: normal;
+    border: 1px solid;
+    border-radius: 0.5em;
+}
+
+fieldset {
+    display: inline-block;
+}
 
 h1 {
     font-size: 200%;
     color: var(--color-header);
+    text-align: center;
 }
 
 h2, h3 {
-    color: var(--color-header);
+    color: var(--color-header2);
+}
+
+legend{
+    color: var(--color-header2);
+    font-weight:bolder;
+}
+
+body{
+    margin: 10px 10px 10px 10px; /* top right bottom left */
+    padding: 10px 25px 10px 25px; /* all four sides */
 }
     
 
@@ -51,10 +96,13 @@ nav button, nav a {
     height: 40px;
     padding: 0px;
     padding-bottom: 5px;
-    background-color: var(--color-header); /* was #3498db */
+    background-color: var(--color-nav-bar); 
     border: 2px solid black;
     border-radius: 5px;
     cursor: pointer;
+    /*this part changes the style of the links*/
+    color:black;
+    text-decoration: none;
     /* Firefox uses font -apple-system unless I repeat the font spec here. */
     font-family: var(--font-family);
     font-weight: bold;
@@ -72,7 +120,45 @@ nav li.right {
     margin-left: auto;
 }
 
-nav button:hover, button:focus, nav a:hover, nav a:focus {
+nav button:hover, button:focus, nav a:hover, nav a:focus, #searchButton:focus, #searchButton:hover{
     background-color: var(--color-focus);
 }
 
+/* Below is the code for the teams drop down */
+/* Dropdown Button */
+.dropbtn {
+    flex: 0 0 auto;
+    width: 10em; 
+    padding-bottom:5px;
+    font-size: 1.4rem;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Styles the links inside the dropdown */
+  .dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+  }
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: var(--color-focus);}
