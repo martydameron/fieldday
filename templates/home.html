@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block main_content %}
+<!-- once login authenication is enabled, this will be the 
+page that the user is directed to once logged
+in. it contains directions on how to use the 
+application which makes it more accessible and does not lead
+to confusion for users. it will say hello followed by user's name. -->
+<h1>Hello! </h1> 
+
+<p> Welcome to field day ! This site allows you to stay updated
+    on your favorite sports ranging from archery to nordic ski and
+    many more. 
+</p>
+
+<p>Here is some info about how to use this site:</p>
+<ul id="homePageList">
+    <li>To access posts by sports you are interested, click
+        feed tab on the nav bar</li>
+    <li>To access posts the settings page, click
+            settings tab on the nav bar</li>
+    <li>To access find teams, hoover over the teams tab on the 
+        nav bar and a drop down menu of teams will appear</li>
+    <li>To return back to this page, click home tab on the nav bar</li>
+</ul>
+{% endblock %}
+
